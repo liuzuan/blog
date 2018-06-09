@@ -6,7 +6,7 @@
 	<link rel="shortcut icon" href="/image/favicon.ico">
 	
 			    <title>
-    LIUZUANN
+    刘祖安 | 博客
     </title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -141,13 +141,13 @@
 </nav>
 
         <div id="main" >
-            <div class ="post_page_title_img" style="height: 25rem;background-image: url();background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://www.520ued.com/uploads/1401445278.jpeg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
                 <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >原型-原型链-继承</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
                 <h3 id="一、原型"><a href="#一、原型" class="headerlink" title="一、原型"></a><strong>一、原型</strong></h3><h4 id="1-1-什么是原型"><a href="#1-1-什么是原型" class="headerlink" title="1.1. 什么是原型"></a>1.1. 什么是原型</h4><p>在 JavaScript 中，我们创建一个函数 A(就是声明一个函数), 那么浏览器就会在内存中创建一个对象 B，而且每个函数都默认会有一个属性 prototype 指向了这个对象( 即：prototype 的属性的值是这个对象 )。这个对象 B 就是函数 A 的原型对象，简称函数的原型。这个原型对象 B 默认会有一个属性 constructor 指向了这个函数 A ( 意思就是说：constructor 属性的值是函数 A )。</p>
-<p> <img src="/blog/image/prototype.png" alt=""></p>
+<p><img src="/blog/image/prototype.png" alt=""></p>
 <p>动态原型模式创建对象:</p>
 <pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// Person构造函数</span>
@@ -167,22 +167,31 @@ p2<span class="token punctuation">.</span><span class="token function">eat</span
 <h4 id="1-2-与原型有关的几个属性和方法"><a href="#1-2-与原型有关的几个属性和方法" class="headerlink" title="1.2. 与原型有关的几个属性和方法"></a>1.2. 与原型有关的几个属性和方法</h4><ol>
 <li>prototype 属性</li>
 </ol>
-<p>prototype 存在于构造函数中 (其实任意函数中都有，只是不是构造函数的时候 prototype 我们不关注而已) ，他指向了这个构造函数的原型对象。</p>
+<ul>
+<li>prototype 存在于构造函数中 (其实任意函数中都有，只是不是构造函数的时候 prototype 我们不关注而已) ，他指向了这个构造函数的原型对象。</li>
+</ul>
 <ol start="2">
-<li>constructor 属性</li>
-</ol>
-<p>​ constructor 属性存在于原型对象中，他指向了构造函数</p>
-<ol start="3">
+<li><p>constructor 属性存在于原型对象中，他指向了构造函数</p>
+</li>
 <li><p><code>__proto__</code> 属性</p>
-<p> 用构造方法创建一个新的对象之后，这个对象中默认会有一个不可访问的属性 [[prototype]] , 这个属性就指向了构造方法的原型对象。<br> ​ 但是在个别浏览器中，也提供了对这个属性[[prototype]]的访问(chrome 浏览器和火狐浏览器。ie 浏览器不支持)。访问方式：p1.<code>__proto__</code>（隐式原型）</p>
-</li>
-<li><p>hasOwnProperty() 方法</p>
-<p> hasOwnProperty 方法，可以判断一个属性是否来自对象本身。</p>
-</li>
-<li><p>in 操作符</p>
-<p> ​in 操作符用来判断一个属性是否存在于这个对象中。但是在查找这个属性时候，现在对象本身中找，如果对象找不到再去原型中找。换句话说，只要对象和原型中有一个地方存在这个属性，就返回 true。</p>
 </li>
 </ol>
+<ul>
+<li>用构造方法创建一个新的对象之后，这个对象中默认会有一个不可访问的属性 [[prototype]] , 这个属性就指向了构造方法的原型对象。</li>
+<li>但是在个别浏览器中，也提供了对这个属性[[prototype]]的访问(chrome 浏览器和火狐浏览器。ie 浏览器不支持)。访问方式：p1.<code>__proto__</code>（隐式原型）</li>
+</ul>
+<ol start="4">
+<li>hasOwnProperty() 方法</li>
+</ol>
+<ul>
+<li>hasOwnProperty 方法，可以判断一个属性是否来自对象本身。</li>
+</ul>
+<ol start="5">
+<li>in 操作符</li>
+</ol>
+<ul>
+<li>in 操作符用来判断一个属性是否存在于这个对象中。但是在查找这个属性时候，现在对象本身中找，如果对象找不到再去原型中找。换句话说，只要对象和原型中有一个地方存在这个属性，就返回 true。</li>
+</ul>
 <h3 id="二、原型链与继承"><a href="#二、原型链与继承" class="headerlink" title="二、原型链与继承"></a><strong>二、原型链与继承</strong></h3><ul>
 <li>在 JavaScript 中，将原型链作为实现继承的主要方法。其基本思想是利用原型让一个引用类型继承另一个引用类型的属性和方法</li>
 </ul>
@@ -237,8 +246,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://liuzuann.com/blog/2018/06/09/hello-world/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://liuzuann.com/blog/2018/06/09/hello-world/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://liuzuann.com/blog/2018/06/09/原型-继承/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://liuzuann.com/blog/2018/06/09/原型-继承/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
@@ -267,10 +276,6 @@ console<span class="token punctuation">.</span><span class="token function">log<
         </div>
         <!-- Copyright 版权 start -->
                 <div id="copyright">
-            <ul>
-                <li>&copy;Powered By <a href="https://hexo.io/zh-cn/" style="border-bottom: none;">hexo</a></li>
-                <li>Design: <a href="http://miccall.tech " style="border-bottom: none;">miccall</a></li>
-            </ul>
             
             	<span id="busuanzi_container_site_pv">2018总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 			
