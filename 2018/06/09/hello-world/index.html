@@ -2,8 +2,8 @@
 <html>
 
 <head>
-	<link rel="bookmark"  type="image/x-icon"  href="/blog/img/favicon.ico"/>
-	<link rel="shortcut icon" href="/blog/img/favicon.ico">
+	<link rel="bookmark"  type="image/x-icon"  href="/image/favicon.ico"/>
+	<link rel="shortcut icon" href="/image/favicon.ico">
 	
 			    <title>
     LIUZUANN
@@ -97,11 +97,19 @@
 	            <a href="#s1">分类</a>
 	                    <ul class="submenu">
 	                        <li>
-	                        
+	                        <a class="category-link" href="/blog/categories/javaScript/">javaScript</a>
 	                    </ul>
 	        </li>
 	        
 	        <!-- archives  归档   --> 
+	        
+	        <li class="active">
+	            <a href="#s1">归档</a>
+	                    <ul class="submenu">
+	                        <li>
+	                        <a class="archive-link" href="/blog/archives/2018/06/">June 2018</a>
+	                    </ul>
+	        </li>
 	        
 	        
 		        <!-- Pages 自定义   -->
@@ -134,23 +142,91 @@
 
         <div id="main" >
             <div class ="post_page_title_img" style="height: 25rem;background-image: url();background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >Hello World</h2></a>
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >原型-原型链-继承</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo server
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo generate
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo deploy
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h3 id="一、原型"><a href="#一、原型" class="headerlink" title="一、原型"></a>一、原型</h3><h4 id="1-1-什么是原型"><a href="#1-1-什么是原型" class="headerlink" title="1.1. 什么是原型"></a>1.1. 什么是原型</h4><p>在 JavaScript 中，我们创建一个函数 A(就是声明一个函数), 那么浏览器就会在内存中创建一个对象 B，而且每个函数都默认会有一个属性 prototype 指向了这个对象( 即：prototype 的属性的值是这个对象 )。这个对象 B 就是函数 A 的原型对象，简称函数的原型。这个原型对象 B 默认会有一个属性 constructor 指向了这个函数 A ( 意思就是说：constructor 属性的值是函数 A )。</p>
+<p><img src="../images/prototype.png" alt=""></p>
+<p>动态原型模式创建对象:</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Person构造函数</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token keyword">this</span><span class="token punctuation">.</span>eat <span class="token operator">!==</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Point<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>eat <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>food<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">alert</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">+</span> <span class="token string">'岁的'</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">'在吃'</span> <span class="token operator">+</span> food<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> p1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Point</span><span class="token punctuation">(</span><span class="token string">'刘祖安'</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 实例1</span>
+<span class="token keyword">let</span> p2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Point</span><span class="token punctuation">(</span><span class="token string">'小怪兽'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 实例2</span>
+p1<span class="token punctuation">.</span><span class="token function">eat</span><span class="token punctuation">(</span><span class="token string">'橘子'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+p2<span class="token punctuation">.</span><span class="token function">eat</span><span class="token punctuation">(</span><span class="token string">'苹果'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="1-2-与原型有关的几个属性和方法"><a href="#1-2-与原型有关的几个属性和方法" class="headerlink" title="1.2. 与原型有关的几个属性和方法"></a>1.2. 与原型有关的几个属性和方法</h4><ol>
+<li>prototype 属性</li>
+</ol>
+<p>prototype 存在于构造函数中 (其实任意函数中都有，只是不是构造函数的时候 prototype 我们不关注而已) ，他指向了这个构造函数的原型对象。</p>
+<ol start="2">
+<li>constructor 属性</li>
+</ol>
+<p>​ constructor 属性存在于原型对象中，他指向了构造函数</p>
+<ol start="3">
+<li><code>__proto__</code> 属性</li>
+</ol>
+<p>用构造方法创建一个新的对象之后，这个对象中默认会有一个不可访问的属性 [[prototype]] , 这个属性就指向了构造方法的原型对象。<br>​ 但是在个别浏览器中，也提供了对这个属性[[prototype]]的访问(chrome 浏览器和火狐浏览器。ie 浏览器不支持)。访问方式：p1.<code>__proto__</code>（隐式原型）</p>
+<ol start="4">
+<li>hasOwnProperty() 方法</li>
+</ol>
+<p>hasOwnProperty 方法，可以判断一个属性是否来自对象本身。</p>
+<ol start="5">
+<li>in 操作符</li>
+</ol>
+<p>​ in 操作符用来判断一个属性是否存在于这个对象中。但是在查找这个属性时候，现在对象本身中找，如果对象找不到再去原型中找。换句话说，只要对象和原型中有一个地方存在这个属性，就返回 true。</p>
+<h3 id="二、原型链与继承"><a href="#二、原型链与继承" class="headerlink" title="二、原型链与继承"></a>二、原型链与继承</h3><ul>
+<li>在 JavaScript 中，将原型链作为实现继承的主要方法。其基本思想是利用原型让一个引用类型继承另一个引用类型的属性和方法</li>
+</ul>
+<h4 id="2-1-父类型的属性共享问题"><a href="#2-1-父类型的属性共享问题" class="headerlink" title="2.1. 父类型的属性共享问题"></a>2.1. 父类型的属性共享问题</h4><p>在原型链中，父类型的构造函数创建的对象，会成为子类型的原型。那么父类型中定义的实例属性，就会成为子类型的原型属性。对子类型来说，这和我们以前说的在原型中定义方法，构造函数中定义属性是违背的。子类型原型(父类型对象)中的属性被所有的子类型的实例所共有，如果有个一个实例去更改，则会很快反应的其他的实例上。</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">Father</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>girls <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'志玲'</span><span class="token punctuation">,</span> <span class="token string">'凤姐'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">Son</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// 子类的原型对象中就有一个属性 girls ，是个数组</span>
+Son<span class="token punctuation">.</span>prototype <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Father</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> son1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Son</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> son2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Son</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//给son1的girls属性的数组添加一个元素</span>
+son1<span class="token punctuation">.</span>girls<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'亦非'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//这时，发现son2中的girls属性的数组内容也发生了改变</span>
+<span class="token function">alert</span><span class="token punctuation">(</span>son2<span class="token punctuation">.</span>girls<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// "志玲", "凤姐", "亦非"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2-2-向父类型的构造函数中传递参数问题"><a href="#2-2-向父类型的构造函数中传递参数问题" class="headerlink" title="2.2. 向父类型的构造函数中传递参数问题"></a>2.2. 向父类型的构造函数中传递参数问题</h4><p>​ 在原型链的继承过程中，只有一个地方用到了父类型的构造函数，Son.prototype = new Father();。只能在这个一个位置传递参数，但是这个时候传递的参数，将来对子类型的所有的实例都有效。</p>
+<p>​ 如果想在创建子类型对象的时候传递参数是没有办法做到的。</p>
+<p>​ 如果想创建子类对象的时候，传递参数，只能另辟他法。</p>
+<h4 id="2-3-借用构造函数调用”继承”"><a href="#2-3-借用构造函数调用”继承”" class="headerlink" title="2.3. 借用构造函数调用”继承”"></a>2.3. 借用构造函数调用”继承”</h4><p>​ 使用 call 或 apply 这两个方法完成函数借调。这两个方法的功能是一样的，只有少许的区别(暂且不管)。功能都是更改一个构造方法内部的 this 指向到指定的对象上。</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">Father</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">Son</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">,</span> sex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>sex <span class="token operator">=</span> sex<span class="token punctuation">;</span>
+    Father<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> name<span class="token punctuation">,</span> age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+Son<span class="token punctuation">.</span>prototype <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Father</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> son1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Son</span><span class="token punctuation">(</span><span class="token string">'刘亦菲'</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token string">'美女'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> son2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Son</span><span class="token punctuation">(</span><span class="token string">'刘德华'</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token string">'帅哥'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>son1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>son2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="../image/继承.png" alt=""></p>
+<h3 id="三、new-操作符"><a href="#三、new-操作符" class="headerlink" title="三、new 操作符"></a>三、new 操作符</h3><ol>
+<li>创建一个空对象，作为将要返回的对象实例</li>
+<li>将这个空对象的原型，指向构造函数的 prototype 属性</li>
+<li>将这个空对象赋值给函数内部的 this 关键字</li>
+<li>开始执行构造函数内部的代码</li>
+</ol>
+<p>注意点：当构造函数里面有 return 关键字时，如果返回的是非对象，new 命令会忽略返回的信息，最后返回时构造之后的 this 对象；<br>如果 return 返回的是与 this 无关的新对象，则最后 new 命令会返回新对象，而不是 this 对象。</p>
 
             </div>
 
