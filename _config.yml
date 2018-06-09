@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: LIUZUANN
+title: 刘祖安 | 博客
 subtitle:
 description:
 keywords:
-author: LIUZUANN
+author: 刘祖安
 language:
 timezone:
 
@@ -29,7 +29,7 @@ i18n_dir: :lang
 skip_render:
 
 # Writing
-new_post_name: :title.md # File name of new posts
+new_post_name: :dir/:title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
