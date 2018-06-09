@@ -39,7 +39,7 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace:
@@ -75,7 +75,16 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: miccall
 
+prism_plugin:
+  mode: 'preprocess'    # realtime/preprocess
+  theme: coy
+  line_number: true    # default false
+  # custom_css: 'themes/miccall/source/css/prism_dark.css'     # optional
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo: https://github.com/liuzuan/blog.git 
+  branch: gh-pages
+  message: "Bolg updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
