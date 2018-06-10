@@ -1,8 +1,8 @@
-图片名称1:
-  full_link: 图片地址
-  thumb_link: 略缩图地址
-  descr: 图片描述
-图片名称2:
-  full_link: 图片地址
-  thumb_link: 略缩图地址
-  descr: 图片描述
+你好，明天:
+  full_link: /blog/img/bg.jpg
+  thumb_link: /blog/img/bg.jpg
+  descr: 
+美图:
+  full_link: /blog/images/me.jpg
+  thumb_link: /blog/images/me.jpg
+  descr: 
