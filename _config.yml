@@ -84,7 +84,11 @@ prism_plugin:
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
+- type: git
   repo: https://github.com/liuzuan/blog.git 
   branch: gh-pages
   message: "Bolg updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
+# - type: git
+#   repo: git@47.96.175.9:/home/git/blog.git 
+#   branch: master
+#   message: "Bolg updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"

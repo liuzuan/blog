@@ -9,7 +9,7 @@ comments:
 thumbnail: /blog/image/this.jpg
 ---
 
-# **<centerJavaScript-this指向</center**
+# **<center>JavaScript-this指向</center>**
 
 ## **写在前面**
 
