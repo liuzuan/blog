@@ -2196,7 +2196,7 @@
 			#me .pic:before {
 				content: '';
 				position: absolute;
-				background: url("/blog/images/me.jpg");
+				background: url("/images/me.jpg");
 				width: 100%;
 				z-index: 1;
 			}
