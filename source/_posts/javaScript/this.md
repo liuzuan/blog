@@ -6,7 +6,7 @@ categories:
 - javaScript
 tags:
 comments:
-thumbnail: /blog/image/this.jpg
+thumbnail: /image/this.jpg
 ---
 
 # **<center>JavaScript-this指向</center>**
