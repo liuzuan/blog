@@ -66,25 +66,24 @@
 <link rel="stylesheet" href="/blog/css/prism-coy.css" type="text/css">
 <link rel="stylesheet" href="/blog/css/prism-line-numbers.css" type="text/css"></head>
     
-		<body class="is-loading">
+		
+<!-- Layouts -->
+
+
+
+<!--  代码渲染  -->
+<link rel="stylesheet" href="/blog/css/prism_coy.css" />
+<link rel="stylesheet" href="/blog/css/typo.css" />
+<!-- 文章页 -->
+<body class="is-loading">
     <!-- Wrapper 外包 s-->
-    <div id="wrapper" class="fade-in overlay">
+    <div id="wrapper" class="fade-in">
         <!-- Intro 头部显示 s -->
-                <div id="intro">
-            <h1>This is<br />
-                        liuzuann </h1>
-            <p> Whatever is worth doing is worth doing well <br/> I'll think of you every step of the way
-            </p>
-            <ul class="actions">
-                <li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
-            </ul>
-        </div>
         <!-- Intro 头部显示 e -->
         <!-- Header 头部logo start -->
         <header id="header">
     <a href="/blog/" class="logo">LIUZUANN</a>
 </header>
-        <!-- Header 头部logo end -->
         <!-- Nav 导航条 start -->
         <nav id="nav" class="special" >
             <ul class="menu links" >
@@ -140,55 +139,52 @@
 		            
 			</ul>
 </nav>
-        <!-- Nav 导航条 end -->
-        <!-- Main 主要部分 start -->
-        
-        <!-- 文章列表   s -->
-        <div id="main" style="background-color: transparent; padding:0;">
-        <section class="link_container" style="margin-top: 0; background-color: transparent; ">
-            <div class="link_row">
-                <!-- 文章sample  s-->
 
-                
-                <div class="6u 12u(narrower)">
-                    <section class="link_box special">
-                       <a href="/blog/2018/06/09/排序算法/">
-                        <div class="page_title" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRodZxoUIlXH-bAaWuIXy788cU4RHgPoBb65rsZ0161NA12rCD4Iw);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;">
-                            <!--标题-->
-                            <h2 class="page_title_text"> 排序算法 </h2>
-                            <!--段落-->
-                        </div>
-                        </a>
-                        <div class="home-post-info">
-                            <!-- Author Avatar -->
-                            <div class="home-post-info-author-avatar">
-                                <h6><span class="home-post-info-data">2018-06-09</span></h6>
-                                <div class="home-post-info-Category">
-                                    <!-- Category -->
-                                    <span>
-                            <h6>
-                            <a class="post_category-link" href="http://localhost:4000/categories/Algorithm/">
-                                <a class="post_category-link" href="/blog/categories/javaScript/">javaScript</a></a>
-                            </h6>
-                        </span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <!-- 文章sample  e-->
-            
+        <div id="main" >
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(/blog/image/pink.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >执行上下文栈</h2></a>
             </div>
-        </section>
-        </div>
-        <!-- 文章列表   end -->
-        <!-- Main 主要部分 end -->
-        <!-- footer  页码 start-->
-        <footer style="text-align: center; padding-top: 2em;">
-  
-</footer>
+            <!-- Post -->
+            <div class="typo" style="padding: 3rem;">
+                
+            </div>
 
-        <!-- footer  页码 end-->
+            <!-- Post Comments -->
+            
+    <!-- 使用 DISQUS -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://liuzuann.xyz/blog/2018/06/24/执行上下文栈/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://liuzuann.xyz/blog/2018/06/24/执行上下文栈/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/ls-javascript" id="disqus-thread-script">
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//http-blog-liuzuann-com.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+</div>
+
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+
+        </div>
         <!-- Copyright 版权 start -->
         <div id="copyright">
     <div style='text-align:center;' >Copyright © 刘祖安 2018 </div>
@@ -198,11 +194,10 @@
             <span id="busuanzi_value_site_pv"></span>次</span>
     
 </div>
-        <!-- Copyright 版权 end -->
     </div>
-    <!-- Wrapper 外包 e-->
-    <!-- Scripts -->
 </body>
+
+
 
  	
 </html>
